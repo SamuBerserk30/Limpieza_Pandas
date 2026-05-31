@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte de Limpieza de Datos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <h1>Reporte de Limpieza de Datos</h1>
+      <p>Proyecto realizado con Python y Pandas</p>
+      <div class="tag">Data Cleaning • Pandas • Python</div>
+    </div>
+
+    <div class="card">
+      <h2>📌 Objetivo</h2>
+      <p>
+        El objetivo de este proyecto fue realizar un proceso completo de limpieza y validación de datos
+        utilizando la librería Pandas en Python. Se trabajó sobre un dataset bancario aplicando técnicas
+        de depuración, eliminación de valores incorrectos y validación de información.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>⚙️ Procesos Realizados</h2>
+      <ul>
+        <li>Carga del dataset.</li>
+        <li>Identificación y eliminación de datos faltantes.</li>
+        <li>Eliminación de registros duplicados.</li>
+        <li>Detección y eliminación de outliers.</li>
+        <li>Generación de histogramas de variables numéricas.</li>
+        <li>Validación de columnas numéricas y categóricas.</li>
+        <li>Corrección de errores tipográficos.</li>
+        <li>Exportación del dataset limpio.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🧹 Eliminación de Datos Incorrectos</h2>
+      <p>
+        Se eliminaron registros con edades mayores a 100 años, valores negativos o iguales a cero
+        en la duración, y datos atípicos en la columna previous.
+      </p>
+      <div class="code">
+        data = data[data['age'] <= 100]<br>
+        data = data[data['duration'] > 0]<br>
+        data = data[data['previous'] <= 100]
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📊 Histogramas de Variables Numéricas</h2>
+      <p>
+        Se generaron histogramas para analizar la distribución de cada variable numérica
+        y detectar posibles valores extremos.
+      </p>
+      <div class="code">
+        sns.histplot(data[col], color='skyblue', bins=30)
+      </div>
+      <div class="img-grid">
+        <div class="img-item">
+          <h3>Age</h3>
+          <img src="images/age.png" alt="Histograma Age">
+        </div>
+        <div class="img-item">
+          <h3>Balance</h3>
+          <img src="images/balance.png" alt="Histograma Balance">
+        </div>
+        <div class="img-item">
+          <h3>Day</h3>
+          <img src="images/day.png" alt="Histograma Day">
+        </div>
+        <div class="img-item">
+          <h3>Duration</h3>
+          <img src="images/duration.png" alt="Histograma Duration">
+        </div>
+        <div class="img-item">
+          <h3>Campaign</h3>
+          <img src="images/campaign.png" alt="Histograma Campaign">
+        </div>
+        <div class="img-item">
+          <h3>Pdays</h3>
+          <img src="images/pdays.png" alt="Histograma Pdays">
+        </div>
+        <div class="img-item">
+          <h3>Previous</h3>
+          <img src="images/previous.png" alt="Histograma Previous">
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>✏️ Corrección de Errores Tipográficos</h2>
+      <p>
+        Se normalizaron los valores categóricos convirtiendo el texto a minúsculas y unificando
+        abreviaciones o inconsistencias en los subniveles.
+      </p>
+      <div class="code">
+        data['job'] = data['job'].str.replace('admin.', 'administrative')<br>
+        data['marital'] = data['marital'].str.replace('div.', 'divorced')<br>
+        data['education'] = data['education'].str.replace('sec.', 'secondary')<br>
+        data.loc[data['contact'] == 'phone', 'contact'] = 'telephone'
+      </div>
+
+      <div class="countplot-section">
+        <div class="countplot-item">
+          <h3 class="antes">Antes de la corrección</h3>
+          <img src="images/countplot_antes.png" alt="Countplot antes">
+        </div>
+        <div class="countplot-item">
+          <h3 class="despues">Después de la corrección</h3>
+          <img src="images/countplot_despues.png" alt="Countplot después">
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>✅ Resultado Final</h2>
+      <p>
+        Finalmente, se obtuvo un dataset limpio, organizado y preparado para futuros análisis
+        o modelos de ciencia de datos. El archivo fue exportado como:
+      </p>
+      <div class="code">
+        dataset_banco_limpio.csv
+      </div>
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-num">45.215</span>
+          <span class="stat-label">Filas originales</span>
+        </div>
+        <div class="stat-arrow">→</div>
+        <div class="stat-item">
+          <span class="stat-num">45.189</span>
+          <span class="stat-label">Filas finales</span>
+        </div>
+        <div class="stat-arrow">−</div>
+        <div class="stat-item">
+          <span class="stat-num">26</span>
+          <span class="stat-label">Filas eliminadas</span>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      Proyecto académico realizado con Python, Pandas y Matplotlib.
+    </footer>
+  </div>
+</body>
+</html>
